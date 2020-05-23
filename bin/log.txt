@@ -1,0 +1,494 @@
+Time to create pBackBuffer: 2.578800ms
+[Error]:red: 72, green: 101, blue: 108, alpha: 108[Error]:after mod: bytearray(b'Hello, World!\t  ')Time to retrieve bytes: 6.122300ms
+Time to convert pixel from RGBA to ABGR: 3.127100ms
+Time to dealloc bytes: 0.400500ms
+Time to draw to window: 0.711200ms
+Time to retrieve bytes: 4.080300ms
+Time to convert pixel from RGBA to ABGR: 3.792900ms
+Time to dealloc bytes: 0.615500ms
+Time to draw to window: 0.629500ms
+Time to retrieve bytes: 3.885900ms
+Time to convert pixel from RGBA to ABGR: 3.454500ms
+Time to dealloc bytes: 0.411800ms
+Time to draw to window: 0.606700ms
+Time to retrieve bytes: 4.646900ms
+Time to convert pixel from RGBA to ABGR: 2.974500ms
+Time to dealloc bytes: 0.392700ms
+Time to draw to window: 0.615200ms
+Time to retrieve bytes: 3.948100ms
+Time to convert pixel from RGBA to ABGR: 2.975500ms
+Time to dealloc bytes: 0.392800ms
+Time to draw to window: 0.621800ms
+Time to retrieve bytes: 3.966700ms
+Time to convert pixel from RGBA to ABGR: 3.091200ms
+Time to dealloc bytes: 0.393600ms
+Time to draw to window: 0.637000ms
+Time to retrieve bytes: 3.939700ms
+Time to convert pixel from RGBA to ABGR: 3.418900ms
+Time to dealloc bytes: 0.398200ms
+Time to draw to window: 0.617200ms
+Time to retrieve bytes: 3.875100ms
+Time to convert pixel from RGBA to ABGR: 3.339100ms
+Time to dealloc bytes: 0.393700ms
+Time to draw to window: 0.616600ms
+Time to retrieve bytes: 4.501500ms
+Time to convert pixel from RGBA to ABGR: 3.040100ms
+Time to dealloc bytes: 0.399800ms
+Time to draw to window: 0.619100ms
+Time to retrieve bytes: 4.587100ms
+Time to convert pixel from RGBA to ABGR: 2.984500ms
+Time to dealloc bytes: 0.393000ms
+Time to draw to window: 0.614400ms
+Time to retrieve bytes: 4.528300ms
+Time to convert pixel from RGBA to ABGR: 2.974400ms
+Time to dealloc bytes: 0.394600ms
+Time to draw to window: 0.619900ms
+Time to retrieve bytes: 4.606300ms
+Time to convert pixel from RGBA to ABGR: 2.974600ms
+Time to dealloc bytes: 0.402700ms
+Time to draw to window: 0.621100ms
+Time to retrieve bytes: 3.849100ms
+Time to convert pixel from RGBA to ABGR: 2.975600ms
+Time to dealloc bytes: 0.396400ms
+Time to draw to window: 0.617500ms
+Time to retrieve bytes: 3.918400ms
+Time to convert pixel from RGBA to ABGR: 2.975800ms
+Time to dealloc bytes: 0.393300ms
+Time to draw to window: 0.615600ms
+Time to retrieve bytes: 4.117900ms
+Time to convert pixel from RGBA to ABGR: 2.974600ms
+Time to dealloc bytes: 0.393100ms
+Time to draw to window: 0.617900ms
+Time to retrieve bytes: 11.460401ms
+Time to convert pixel from RGBA to ABGR: 11.163899ms
+Time to dealloc bytes: 0.974700ms
+Time to draw to window: 1.431500ms
+Time to retrieve bytes: 4.138900ms
+Time to convert pixel from RGBA to ABGR: 2.975100ms
+Time to dealloc bytes: 0.432600ms
+Time to draw to window: 0.627500ms
+Time to retrieve bytes: 3.940100ms
+Time to convert pixel from RGBA to ABGR: 3.102500ms
+Time to dealloc bytes: 0.387200ms
+Time to draw to window: 0.608800ms
+Time to retrieve bytes: 4.071200ms
+Time to convert pixel from RGBA to ABGR: 3.230300ms
+Time to dealloc bytes: 0.390600ms
+Time to draw to window: 0.838100ms
+Time to retrieve bytes: 4.546900ms
+Time to convert pixel from RGBA to ABGR: 3.238200ms
+Time to dealloc bytes: 0.388400ms
+Time to draw to window: 0.649600ms
+Time to retrieve bytes: 5.307000ms
+Time to convert pixel from RGBA to ABGR: 3.643700ms
+Time to dealloc bytes: 0.408500ms
+Time to draw to window: 0.761100ms
+Time to retrieve bytes: 3.887600ms
+Time to convert pixel from RGBA to ABGR: 3.117500ms
+Time to dealloc bytes: 0.406000ms
+Time to draw to window: 1.064600ms
+Time to retrieve bytes: 12.372500ms
+Time to convert pixel from RGBA to ABGR: 10.809999ms
+Time to dealloc bytes: 1.328600ms
+Time to draw to window: 1.830000ms
+Time to retrieve bytes: 12.219299ms
+Time to convert pixel from RGBA to ABGR: 10.898200ms
+Time to dealloc bytes: 1.007800ms
+Time to draw to window: 1.580800ms
+Time to retrieve bytes: 12.457000ms
+Time to convert pixel from RGBA to ABGR: 11.240300ms
+Time to dealloc bytes: 1.348700ms
+Time to draw to window: 1.809000ms
+Time to retrieve bytes: 12.584100ms
+Time to convert pixel from RGBA to ABGR: 11.306800ms
+Time to dealloc bytes: 1.115200ms
+Time to draw to window: 1.810000ms
+Time to retrieve bytes: 12.570400ms
+Time to convert pixel from RGBA to ABGR: 11.075000ms
+Time to dealloc bytes: 1.053300ms
+Time to draw to window: 1.415200ms
+Time to retrieve bytes: 13.228100ms
+Time to convert pixel from RGBA to ABGR: 11.021999ms
+Time to dealloc bytes: 1.080400ms
+Time to draw to window: 1.452700ms
+Time to retrieve bytes: 12.137600ms
+Time to convert pixel from RGBA to ABGR: 11.638101ms
+Time to dealloc bytes: 1.271700ms
+Time to draw to window: 1.459800ms
+Time to retrieve bytes: 12.118700ms
+Time to convert pixel from RGBA to ABGR: 11.712400ms
+Time to dealloc bytes: 1.081200ms
+Time to draw to window: 2.027700ms
+Time to retrieve bytes: 12.664499ms
+Time to convert pixel from RGBA to ABGR: 11.261001ms
+Time to dealloc bytes: 1.021700ms
+Time to draw to window: 1.446600ms
+Time to retrieve bytes: 12.363800ms
+Time to convert pixel from RGBA to ABGR: 10.922900ms
+Time to dealloc bytes: 1.492600ms
+Time to draw to window: 1.970100ms
+Time to retrieve bytes: 12.116300ms
+Time to convert pixel from RGBA to ABGR: 10.644899ms
+Time to dealloc bytes: 1.389000ms
+Time to draw to window: 1.850600ms
+Time to retrieve bytes: 12.999399ms
+Time to convert pixel from RGBA to ABGR: 11.211600ms
+Time to dealloc bytes: 1.144100ms
+Time to draw to window: 2.136200ms
+Time to retrieve bytes: 12.596500ms
+Time to convert pixel from RGBA to ABGR: 12.606000ms
+Time to dealloc bytes: 1.473800ms
+Time to draw to window: 1.706800ms
+Time to retrieve bytes: 14.840900ms
+Time to convert pixel from RGBA to ABGR: 12.538500ms
+Time to dealloc bytes: 1.238800ms
+Time to draw to window: 2.562200ms
+Time to retrieve bytes: 12.467401ms
+Time to convert pixel from RGBA to ABGR: 9.456800ms
+Time to dealloc bytes: 0.746400ms
+Time to draw to window: 0.928200ms
+Time to retrieve bytes: 7.465100ms
+Time to convert pixel from RGBA to ABGR: 6.383400ms
+Time to dealloc bytes: 0.686700ms
+Time to draw to window: 0.917100ms
+Time to retrieve bytes: 7.694700ms
+Time to convert pixel from RGBA to ABGR: 6.121600ms
+Time to dealloc bytes: 0.791100ms
+Time to draw to window: 1.171200ms
+Time to retrieve bytes: 7.300400ms
+Time to convert pixel from RGBA to ABGR: 8.145200ms
+Time to dealloc bytes: 1.122500ms
+Time to draw to window: 1.641900ms
+Time to retrieve bytes: 11.900600ms
+Time to convert pixel from RGBA to ABGR: 11.009600ms
+Time to dealloc bytes: 1.047800ms
+Time to draw to window: 1.508200ms
+Time to retrieve bytes: 12.340800ms
+Time to convert pixel from RGBA to ABGR: 10.295300ms
+Time to dealloc bytes: 1.126900ms
+Time to draw to window: 1.402400ms
+Time to retrieve bytes: 7.454700ms
+Time to convert pixel from RGBA to ABGR: 6.774400ms
+Time to dealloc bytes: 0.944400ms
+Time to draw to window: 1.024200ms
+Time to retrieve bytes: 7.969800ms
+Time to convert pixel from RGBA to ABGR: 6.382200ms
+Time to dealloc bytes: 1.104200ms
+Time to draw to window: 1.530900ms
+Time to retrieve bytes: 12.553700ms
+Time to convert pixel from RGBA to ABGR: 11.815200ms
+Time to dealloc bytes: 1.071100ms
+Time to draw to window: 1.813500ms
+Time to retrieve bytes: 11.865700ms
+Time to convert pixel from RGBA to ABGR: 11.000899ms
+Time to dealloc bytes: 1.532800ms
+Time to draw to window: 1.415900ms
+Time to retrieve bytes: 10.040200ms
+Time to convert pixel from RGBA to ABGR: 3.428800ms
+Time to dealloc bytes: 0.504100ms
+Time to draw to window: 0.663700ms
+Time to retrieve bytes: 3.945600ms
+Time to convert pixel from RGBA to ABGR: 3.135400ms
+Time to dealloc bytes: 0.410100ms
+Time to draw to window: 0.625000ms
+Time to retrieve bytes: 4.253700ms
+Time to convert pixel from RGBA to ABGR: 3.103700ms
+Time to dealloc bytes: 0.408800ms
+Time to draw to window: 0.612500ms
+Time to retrieve bytes: 3.958600ms
+Time to convert pixel from RGBA to ABGR: 2.999100ms
+Time to dealloc bytes: 0.403900ms
+Time to draw to window: 0.614900ms
+Time to retrieve bytes: 4.130600ms
+Time to convert pixel from RGBA to ABGR: 3.126600ms
+Time to dealloc bytes: 0.483900ms
+Time to draw to window: 0.619500ms
+Time to retrieve bytes: 3.953800ms
+Time to convert pixel from RGBA to ABGR: 3.048400ms
+Time to dealloc bytes: 0.418700ms
+Time to draw to window: 0.617700ms
+Time to retrieve bytes: 3.869800ms
+Time to convert pixel from RGBA to ABGR: 3.108600ms
+Time to dealloc bytes: 0.395100ms
+Time to draw to window: 0.609600ms
+Time to retrieve bytes: 3.918400ms
+Time to convert pixel from RGBA to ABGR: 3.075000ms
+Time to dealloc bytes: 0.407700ms
+Time to draw to window: 0.614200ms
+Time to retrieve bytes: 3.928400ms
+Time to convert pixel from RGBA to ABGR: 3.118000ms
+Time to dealloc bytes: 0.410700ms
+Time to draw to window: 0.657300ms
+Time to retrieve bytes: 4.045600ms
+Time to convert pixel from RGBA to ABGR: 3.037000ms
+Time to dealloc bytes: 0.538900ms
+Time to draw to window: 0.698100ms
+Time to retrieve bytes: 4.082700ms
+Time to convert pixel from RGBA to ABGR: 3.116100ms
+Time to dealloc bytes: 0.402200ms
+Time to draw to window: 0.608100ms
+Time to retrieve bytes: 3.811400ms
+Time to convert pixel from RGBA to ABGR: 3.135000ms
+Time to dealloc bytes: 0.406900ms
+Time to draw to window: 0.622000ms
+Time to retrieve bytes: 5.364000ms
+Time to convert pixel from RGBA to ABGR: 3.036500ms
+Time to dealloc bytes: 0.400000ms
+Time to draw to window: 1.029200ms
+Time to retrieve bytes: 4.052000ms
+Time to convert pixel from RGBA to ABGR: 3.058100ms
+Time to dealloc bytes: 0.427600ms
+Time to draw to window: 0.629800ms
+Time to retrieve bytes: 4.035100ms
+Time to convert pixel from RGBA to ABGR: 3.005000ms
+Time to dealloc bytes: 0.407300ms
+Time to draw to window: 0.636700ms
+Time to retrieve bytes: 3.924100ms
+Time to convert pixel from RGBA to ABGR: 3.085400ms
+Time to dealloc bytes: 0.405700ms
+Time to draw to window: 0.607900ms
+Time to retrieve bytes: 3.998300ms
+Time to convert pixel from RGBA to ABGR: 3.106300ms
+Time to dealloc bytes: 0.404800ms
+Time to draw to window: 0.613400ms
+Time to retrieve bytes: 3.926200ms
+Time to convert pixel from RGBA to ABGR: 3.115600ms
+Time to dealloc bytes: 0.404400ms
+Time to draw to window: 0.612800ms
+Time to retrieve bytes: 3.904700ms
+Time to convert pixel from RGBA to ABGR: 3.120400ms
+Time to dealloc bytes: 0.410300ms
+Time to draw to window: 0.691800ms
+Time to retrieve bytes: 4.061000ms
+Time to convert pixel from RGBA to ABGR: 3.037700ms
+Time to dealloc bytes: 0.422500ms
+Time to draw to window: 0.629300ms
+Time to retrieve bytes: 3.965000ms
+Time to convert pixel from RGBA to ABGR: 3.095600ms
+Time to dealloc bytes: 0.401200ms
+Time to draw to window: 0.616400ms
+Time to retrieve bytes: 3.944900ms
+Time to convert pixel from RGBA to ABGR: 3.004800ms
+Time to dealloc bytes: 0.406700ms
+Time to draw to window: 0.631000ms
+Time to retrieve bytes: 4.005500ms
+Time to convert pixel from RGBA to ABGR: 3.084600ms
+Time to dealloc bytes: 0.402400ms
+Time to draw to window: 0.612400ms
+Time to retrieve bytes: 3.966000ms
+Time to convert pixel from RGBA to ABGR: 3.026700ms
+Time to dealloc bytes: 0.405200ms
+Time to draw to window: 0.658600ms
+Time to retrieve bytes: 4.156300ms
+Time to convert pixel from RGBA to ABGR: 3.012700ms
+Time to dealloc bytes: 0.657900ms
+Time to draw to window: 0.578100ms
+Time to retrieve bytes: 3.906800ms
+Time to convert pixel from RGBA to ABGR: 3.115900ms
+Time to dealloc bytes: 0.410200ms
+Time to draw to window: 0.625600ms
+Time to retrieve bytes: 3.837500ms
+Time to convert pixel from RGBA to ABGR: 3.101400ms
+Time to dealloc bytes: 0.408100ms
+Time to draw to window: 0.612900ms
+Time to retrieve bytes: 4.049700ms
+Time to convert pixel from RGBA to ABGR: 3.004300ms
+Time to dealloc bytes: 0.448600ms
+Time to draw to window: 0.676800ms
+Time to retrieve bytes: 4.019000ms
+Time to convert pixel from RGBA to ABGR: 3.132300ms
+Time to dealloc bytes: 0.401600ms
+Time to draw to window: 0.608500ms
+Time to retrieve bytes: 3.945500ms
+Time to convert pixel from RGBA to ABGR: 3.118100ms
+Time to dealloc bytes: 0.407700ms
+Time to draw to window: 0.619000ms
+Time to retrieve bytes: 3.956600ms
+Time to convert pixel from RGBA to ABGR: 2.975500ms
+Time to dealloc bytes: 0.406100ms
+Time to draw to window: 0.661300ms
+Time to retrieve bytes: 3.980200ms
+Time to convert pixel from RGBA to ABGR: 2.991300ms
+Time to dealloc bytes: 0.400500ms
+Time to draw to window: 0.663600ms
+Time to retrieve bytes: 4.032600ms
+Time to convert pixel from RGBA to ABGR: 3.096400ms
+Time to dealloc bytes: 0.405800ms
+Time to draw to window: 0.606000ms
+Time to retrieve bytes: 3.978700ms
+Time to convert pixel from RGBA to ABGR: 2.975900ms
+Time to dealloc bytes: 0.463800ms
+Time to draw to window: 0.614900ms
+Time to retrieve bytes: 3.920400ms
+Time to convert pixel from RGBA to ABGR: 2.974400ms
+Time to dealloc bytes: 0.404800ms
+Time to draw to window: 0.814300ms
+Time to retrieve bytes: 4.011600ms
+Time to convert pixel from RGBA to ABGR: 2.975600ms
+Time to dealloc bytes: 0.399900ms
+Time to draw to window: 0.613000ms
+Time to retrieve bytes: 3.821600ms
+Time to convert pixel from RGBA to ABGR: 2.975200ms
+Time to dealloc bytes: 0.542300ms
+Time to draw to window: 0.605900ms
+Time to retrieve bytes: 3.858000ms
+Time to convert pixel from RGBA to ABGR: 2.976300ms
+Time to dealloc bytes: 0.407900ms
+Time to draw to window: 0.622100ms
+Time to retrieve bytes: 3.906400ms
+Time to convert pixel from RGBA to ABGR: 2.976000ms
+Time to dealloc bytes: 0.572200ms
+Time to draw to window: 0.596200ms
+Time to retrieve bytes: 3.953100ms
+Time to convert pixel from RGBA to ABGR: 2.975900ms
+Time to dealloc bytes: 0.399900ms
+Time to draw to window: 0.611300ms
+Time to retrieve bytes: 3.998200ms
+Time to convert pixel from RGBA to ABGR: 3.079500ms
+Time to dealloc bytes: 0.403800ms
+Time to draw to window: 0.623100ms
+Time to retrieve bytes: 4.073500ms
+Time to convert pixel from RGBA to ABGR: 3.015600ms
+Time to dealloc bytes: 0.398600ms
+Time to draw to window: 0.955700ms
+Time to retrieve bytes: 3.978500ms
+Time to convert pixel from RGBA to ABGR: 3.071900ms
+Time to dealloc bytes: 0.408700ms
+Time to draw to window: 0.619300ms
+Time to retrieve bytes: 4.020500ms
+Time to convert pixel from RGBA to ABGR: 3.104300ms
+Time to dealloc bytes: 0.403700ms
+Time to draw to window: 0.614800ms
+Time to retrieve bytes: 4.180700ms
+Time to convert pixel from RGBA to ABGR: 2.969200ms
+Time to dealloc bytes: 0.406700ms
+Time to draw to window: 0.665000ms
+Time to retrieve bytes: 4.057100ms
+Time to convert pixel from RGBA to ABGR: 3.007400ms
+Time to dealloc bytes: 0.404300ms
+Time to draw to window: 0.741100ms
+Time to retrieve bytes: 4.026600ms
+Time to convert pixel from RGBA to ABGR: 3.101900ms
+Time to dealloc bytes: 0.404700ms
+Time to draw to window: 0.609900ms
+Time to retrieve bytes: 4.093700ms
+Time to convert pixel from RGBA to ABGR: 3.121700ms
+Time to dealloc bytes: 0.404600ms
+Time to draw to window: 0.609900ms
+Time to retrieve bytes: 3.928800ms
+Time to convert pixel from RGBA to ABGR: 3.120500ms
+Time to dealloc bytes: 0.405200ms
+Time to draw to window: 0.621600ms
+Time to retrieve bytes: 4.125300ms
+Time to convert pixel from RGBA to ABGR: 3.017600ms
+Time to dealloc bytes: 0.398400ms
+Time to draw to window: 0.915000ms
+Time to retrieve bytes: 3.981900ms
+Time to convert pixel from RGBA to ABGR: 3.113900ms
+Time to dealloc bytes: 0.407500ms
+Time to draw to window: 0.609100ms
+Time to retrieve bytes: 4.129700ms
+Time to convert pixel from RGBA to ABGR: 3.095100ms
+Time to dealloc bytes: 0.396200ms
+Time to draw to window: 0.610000ms
+Time to retrieve bytes: 3.942700ms
+Time to convert pixel from RGBA to ABGR: 2.985500ms
+Time to dealloc bytes: 0.431400ms
+Time to draw to window: 0.626700ms
+Time to retrieve bytes: 3.940500ms
+Time to convert pixel from RGBA to ABGR: 2.976500ms
+Time to dealloc bytes: 0.408500ms
+Time to draw to window: 0.621400ms
+Time to retrieve bytes: 3.911800ms
+Time to convert pixel from RGBA to ABGR: 2.974700ms
+Time to dealloc bytes: 0.409600ms
+Time to draw to window: 0.619300ms
+Time to retrieve bytes: 3.920600ms
+Time to convert pixel from RGBA to ABGR: 2.975000ms
+Time to dealloc bytes: 0.404800ms
+Time to draw to window: 0.634700ms
+Time to retrieve bytes: 3.873700ms
+Time to convert pixel from RGBA to ABGR: 2.975400ms
+Time to dealloc bytes: 0.405900ms
+Time to draw to window: 0.620700ms
+Time to retrieve bytes: 3.977400ms
+Time to convert pixel from RGBA to ABGR: 2.976200ms
+Time to dealloc bytes: 0.574000ms
+Time to draw to window: 0.596200ms
+Time to retrieve bytes: 3.966200ms
+Time to convert pixel from RGBA to ABGR: 2.974700ms
+Time to dealloc bytes: 0.400900ms
+Time to draw to window: 0.612900ms
+Time to retrieve bytes: 3.953800ms
+Time to convert pixel from RGBA to ABGR: 2.975100ms
+Time to dealloc bytes: 0.404100ms
+Time to draw to window: 0.611800ms
+Time to retrieve bytes: 3.985500ms
+Time to convert pixel from RGBA to ABGR: 3.088500ms
+Time to dealloc bytes: 0.420500ms
+Time to draw to window: 0.619600ms
+Time to retrieve bytes: 4.124900ms
+Time to convert pixel from RGBA to ABGR: 3.022600ms
+Time to dealloc bytes: 0.406500ms
+Time to draw to window: 0.650000ms
+Time to retrieve bytes: 4.028300ms
+Time to convert pixel from RGBA to ABGR: 3.004400ms
+Time to dealloc bytes: 0.403600ms
+Time to draw to window: 0.683600ms
+Time to retrieve bytes: 4.059200ms
+Time to convert pixel from RGBA to ABGR: 3.034000ms
+Time to dealloc bytes: 0.516700ms
+Time to draw to window: 0.657300ms
+Time to retrieve bytes: 3.814800ms
+Time to convert pixel from RGBA to ABGR: 3.119800ms
+Time to dealloc bytes: 0.399700ms
+Time to draw to window: 0.637300ms
+Time to retrieve bytes: 3.957800ms
+Time to convert pixel from RGBA to ABGR: 3.171900ms
+Time to dealloc bytes: 0.406700ms
+Time to draw to window: 0.625400ms
+Time to retrieve bytes: 4.094800ms
+Time to convert pixel from RGBA to ABGR: 3.034000ms
+Time to dealloc bytes: 0.524100ms
+Time to draw to window: 0.653200ms
+Time to retrieve bytes: 4.000900ms
+Time to convert pixel from RGBA to ABGR: 3.114700ms
+Time to dealloc bytes: 0.401400ms
+Time to draw to window: 0.607000ms
+Time to retrieve bytes: 4.036400ms
+Time to convert pixel from RGBA to ABGR: 3.083100ms
+Time to dealloc bytes: 0.398200ms
+Time to draw to window: 0.612500ms
+Time to retrieve bytes: 4.194800ms
+Time to convert pixel from RGBA to ABGR: 3.131300ms
+Time to dealloc bytes: 0.400400ms
+Time to draw to window: 0.613800ms
+Time to retrieve bytes: 4.797300ms
+Time to convert pixel from RGBA to ABGR: 4.556000ms
+Time to dealloc bytes: 0.618400ms
+Time to draw to window: 1.410600ms
+Time to retrieve bytes: 5.056900ms
+Time to convert pixel from RGBA to ABGR: 4.451200ms
+Time to dealloc bytes: 0.638300ms
+Time to draw to window: 0.911600ms
+Time to retrieve bytes: 4.786700ms
+Time to convert pixel from RGBA to ABGR: 4.068800ms
+Time to dealloc bytes: 0.622100ms
+Time to draw to window: 0.811700ms
+Time to retrieve bytes: 4.117600ms
+Time to convert pixel from RGBA to ABGR: 3.366000ms
+Time to dealloc bytes: 0.568400ms
+Time to draw to window: 0.714300ms
+Time to retrieve bytes: 4.288900ms
+Time to convert pixel from RGBA to ABGR: 3.340000ms
+Time to dealloc bytes: 0.553100ms
+Time to draw to window: 0.693300ms
+Time to retrieve bytes: 5.271400ms
+Time to convert pixel from RGBA to ABGR: 4.447600ms
+Time to dealloc bytes: 0.539100ms
+Time to draw to window: 0.742400ms
+Time to retrieve bytes: 4.357300ms
+Time to convert pixel from RGBA to ABGR: 4.711400ms
+Time to dealloc bytes: 0.678800ms
+Time to draw to window: 0.720600ms
+[Error]:The window was destroyed!
