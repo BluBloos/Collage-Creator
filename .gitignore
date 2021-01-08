@@ -5,3 +5,4 @@ bin/*.dbg
 bin/*.obj
 bin/*.pdb
 bin/*.txt
+bin/*.py
