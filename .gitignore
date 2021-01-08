@@ -1,0 +1,7 @@
+bin/__pycache__/*
+bin/.vs/*
+bin/*.exe
+bin/*.dbg
+bin/*.obj
+bin/*.pdb
+bin/*.txt
