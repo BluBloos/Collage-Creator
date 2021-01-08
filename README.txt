@@ -1,2 +1,0 @@
-ATTRIBUTIONS:
-https://roundicons.com/
