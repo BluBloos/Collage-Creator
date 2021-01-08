@@ -712,11 +712,10 @@ def AppExport(platform, storage, backBuffer, imageName):
 		image.Blit(canvas)
 
 	croppedCanvas = canvas.crop((PANEL_WIDTH, 0, backBuffer.width, backBuffer.height))
-	# TODO(Noah): Implement image format filters in the C layer so
-	# that I can omit the fact that we only output png images
-	croppedCanvas.save(imageName, "PNG")
 
-	newMenu = Menu(None, backBuffer.width // 2, 20, (storage.renderer, storage.font), backBuffer.width, backBuffer.height, [("{} wrote successfully.".format(imageName), None)], timeout=2.0)
+	croppedCanvas.save(imageName + ".PNG", "PNG")
+
+	newMenu = Menu(None, backBuffer.width // 2, 20, (storage.renderer, storage.font), backBuffer.width, backBuffer.height, [("{} wrote successfully.".format(imageName + ".PNG"), None)], timeout=2.0)
 	newMenu.left -= newMenu.width // 2 # put it in the middle
 	storage.activeMenu = newMenu
 

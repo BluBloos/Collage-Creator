@@ -173,7 +173,7 @@ static PyObject *pClose = NULL;
 static PyObject *pPreInit = NULL;
 
 // Array of the python objects, where each object stores information about a given input key. platform.keys() is a wrapper around this list.
-static PyObject *platformKeys[PLATFORM_KEY_COUNT] = {}; 
+static PyObject *platformKeys[PLATFORM_KEY_COUNT] = {};
 
 /* WIN32 FUNCTIONS */
 
@@ -193,15 +193,15 @@ inline float Win32GetSecondsElapsed(LARGE_INTEGER Start, LARGE_INTEGER End, LONG
 void Win32ResizeDIBSection(win32_offscreen_buffer *buffer,int width, int height)
 {
 	//NOTE(Noah): we can do this since we know that bitmapMemory is initialized to zero since it's static.
-	if(buffer->memory) 
+	if(buffer->memory)
 	{
 		VirtualFree(buffer->memory, 0, MEM_RELEASE);
 	}
-	
+
 	//NOTE(Noah): set bitmap heights and widths for global struct
 	buffer->width = width;
 	buffer->height = height;
-	
+
 	//NOTE(Noah): set values in the bitmapinfo
 	buffer->info = {};
 	buffer->info.biSize = sizeof(BITMAPINFOHEADER);
@@ -213,15 +213,15 @@ void Win32ResizeDIBSection(win32_offscreen_buffer *buffer,int width, int height)
 	buffer->info.redMask = 0x000000FF;
 	buffer->info.greenMask = 0x0000FF00;
 	buffer->info.blueMask = 0x00FF0000;
-	
+
 	//NOTE(Noah): Here we are allocating memory to our bitmap since we resized it
 	buffer->bytesPerPixel = 4;
 	int bitmapMemorySize = width * height * buffer->bytesPerPixel;
 	buffer->memory = VirtualAlloc(0, bitmapMemorySize, MEM_COMMIT,PAGE_READWRITE);
-	
+
 	//NOTE(Noah): setting pitch shit, ahah.
 	buffer->pitch = width * buffer->bytesPerPixel;
-	
+
 	buffer->totalSize = bitmapMemorySize;
 	// TODO(Noah): Probrably want to clear to black each time we resize the window. Also need to recreate the backBuffer object. Dang.
 }
@@ -238,12 +238,12 @@ void Win32DisplayBufferWindow(HDC deviceContext,win32_offscreen_buffer *buffer,i
 {
 	int offsetX = (windowWidth - buffer->width) / 2;
 	int offsetY = (windowHeight - buffer->height) / 2;
-	
+
 	PatBlt(deviceContext, 0, 0, windowWidth, offsetY, BLACKNESS);
 	PatBlt(deviceContext, 0, offsetY + buffer->height, windowWidth, offsetY, BLACKNESS);
 	PatBlt(deviceContext, 0, 0, offsetX, windowHeight, BLACKNESS);
 	PatBlt(deviceContext, offsetX + buffer->width, 0, offsetX, windowHeight, BLACKNESS);
-	
+
 	//TODO(Noah): Correct aspect ratio.
 	StretchDIBits(deviceContext,
 				  offsetX, offsetY, buffer->width, buffer->height,
@@ -254,13 +254,16 @@ void Win32DisplayBufferWindow(HDC deviceContext,win32_offscreen_buffer *buffer,i
 				  SRCCOPY);
 }
 
-OPENFILENAME Win32FileNameDialog(HWND window, char *filePath, int filePathLen, char *initialDir, char*title, int flags)
+OPENFILENAME Win32FileNameDialog(HWND window, char *filePath, int filePathLen, char *initialDir, char*title, int flags, char *filters)
 {
 	OPENFILENAME fileNameResult = {};
 	fileNameResult.lStructSize = sizeof(OPENFILENAME);
 	fileNameResult.hwndOwner = window;
 	fileNameResult.hInstance = NULL;
-	fileNameResult.lpstrFilter = NULL;
+	fileNameResult.lpstrFilter = filters;
+	if (filters != NULL) {
+		fileNameResult.nFilterIndex = 1;
+	}
 	fileNameResult.lpstrCustomFilter = NULL;
 	fileNameResult.lpstrFile = filePath;
 	fileNameResult.nMaxFile = filePathLen;
@@ -275,10 +278,10 @@ OPENFILENAME Win32FileNameDialog(HWND window, char *filePath, int filePathLen, c
 PyObject *PyPlatformWallClock(PyObject *self, PyObject *args)
 {
 	LARGE_INTEGER clockTime = Win32GetWallClock();
-	float fClockTime = (float)clockTime.QuadPart / (float)globalPerfFreq; 
-	
+	float fClockTime = (float)clockTime.QuadPart / (float)globalPerfFreq;
+
 	PyObject *pClockTime = Py_BuildValue("d", fClockTime);
-	
+
 	return pClockTime;
 }
 
@@ -307,7 +310,7 @@ PyObject *PyPlatformSetCursor(PyObject *self, PyObject *args)
 	int cursorEnum;
 	if(!PyArg_ParseTuple(args, "i", &cursorEnum))
 		return NULL;
-	
+
 	switch(cursorEnum)
 	{
 		case 0: // arrow
@@ -329,7 +332,7 @@ PyObject *PyPlatformSetCursor(PyObject *self, PyObject *args)
 		SetCursor(LoadCursor(0, IDC_SIZENWSE));
 		break;
 	}
-	
+
 	Py_RETURN_NONE;
 }
 
@@ -342,7 +345,7 @@ PyObject *PyPlatformWindowName(PyObject *self, PyObject *args)
 	Py_RETURN_NONE;
 }
 
-static PyMethodDef pyPlatformMethods[] = 
+static PyMethodDef pyPlatformMethods[] =
 {
 	{"Log", PyPlatformPrint, METH_VARARGS, "Print to the console. Does nothing unless compiled with DEBUG switch."},
 	{"SetCursor", PyPlatformSetCursor, METH_VARARGS, "Set the cursor."},
@@ -352,7 +355,7 @@ static PyMethodDef pyPlatformMethods[] =
 	{NULL, NULL, 0, NULL} // Sentinel
 };
 
-static struct PyModuleDef pyPlatformModule = 
+static struct PyModuleDef pyPlatformModule =
 {
 	PyModuleDef_HEAD_INIT,
 	"platform", // Name of the module
@@ -361,7 +364,7 @@ static struct PyModuleDef pyPlatformModule =
 	pyPlatformMethods
 };
 
-static struct PyModuleDef pyStorageModule = 
+static struct PyModuleDef pyStorageModule =
 {
 	PyModuleDef_HEAD_INIT,
 	"storage", // Name of the module
@@ -373,23 +376,23 @@ static struct PyModuleDef pyStorageModule =
 char *PyToString(PyObject *pObj)
 {
 	PyObject *pString = PyObject_Str(pObj);
-	
+
 	if (pString && PyUnicode_Check(pString))
 	{
 		if (PyUnicode_READY(pString))
 		{
 			goto PyToStringFail;
 		}
-		
+
 		return (char *)PyUnicode_DATA(pString);
 	}
 	else
 	{
 		goto PyToStringFail;
 	}
-	
+
 	PyToStringFail:
-	
+
 	Py_XDECREF(pString);
 	return NULL;
 }
@@ -397,17 +400,17 @@ char *PyToString(PyObject *pObj)
 void PyHandleExceptionDumb()
 {
 	PyObject * err = PyErr_Occurred();
-	
+
 	if (err)
 	{
 		PyObject *pExcType;
 		PyObject *pValue;
 		PyObject *pTraceback;
-		
+
 		PyErr_Fetch(&pExcType, &pValue, &pTraceback);
-		
+
 		char *message = PyToString(pValue);
-		
+
 		if (message)
 		{
 			Log("[Exception]:\n");
@@ -419,7 +422,7 @@ void PyHandleExceptionDumb()
 			LogError("Exception printing failed!");
 			Log("\n");
 		}
-		
+
 		Py_XDECREF(pExcType);
 		Py_XDECREF(pValue);
 		Py_XDECREF(pTraceback);
@@ -437,7 +440,7 @@ LRESULT CALLBACK Win32WindowProc(HWND window,
 								 LPARAM lParam)
 {
 	LRESULT result = 0;
-	
+
 	switch(message)
 	{
 		case WM_DESTROY:
@@ -452,22 +455,22 @@ LRESULT CALLBACK Win32WindowProc(HWND window,
 			globalRunning = false;
 		}
 		break;
-		
+
 		// NOTE(Noah): WM_PAINT happens when the system sends a request to paint a portion of the window.
 		case WM_PAINT:
 		{
 			PAINTSTRUCT paintStruct = {};
 			HDC deviceContext = BeginPaint(window, &paintStruct);
-			
+
 			int width;
 			int height;
 			Win32GetWindowDimension(window, &width, &height);
 			Win32DisplayBufferWindow(deviceContext,&globalBackBuffer, width, height);
-			
+
 			EndPaint(window, &paintStruct);
 		}
 		break;
-		
+
 		case WM_LBUTTONDOWN:
 		globalInput.buttons[PLATFORM_KEY_MOUSE_LEFT].isDown = true;
 		break;
@@ -480,12 +483,12 @@ LRESULT CALLBACK Win32WindowProc(HWND window,
 		case WM_RBUTTONUP:
 		globalInput.buttons[PLATFORM_KEY_MOUSE_RIGHT].isDown = false;
 		break;
-		
+
 		case WM_KEYUP:
 		case WM_KEYDOWN:
 		{
 			bool IsDown = ((lParam & (1 << 31)) == 0);
-			
+
 			switch(wParam)
 			{
 				case VK_CONTROL:
@@ -531,8 +534,10 @@ LRESULT CALLBACK Win32WindowProc(HWND window,
 				case COMMAND_IMPORT:
 				{
 					char filePath[256] = {};
-					OPENFILENAME fileNameResult = Win32FileNameDialog(window, filePath, 256, "C:\\", "Open image", OFN_FILEMUSTEXIST | OFN_PATHMUSTEXIST | OFN_NOCHANGEDIR);
-					
+
+					// TODO: Make more general, i.e. no hard coding of filter and title for dialog
+					OPENFILENAME fileNameResult = Win32FileNameDialog(window, filePath, 256, "C:\\", "Open image", OFN_FILEMUSTEXIST | OFN_PATHMUSTEXIST | OFN_NOCHANGEDIR, NULL);
+
 					if(!GetOpenFileName(&fileNameResult))
 					{
 						LogError("Could not open file.\n");
@@ -542,9 +547,9 @@ LRESULT CALLBACK Win32WindowProc(HWND window,
 						if (pImport && PyCallable_Check(pImport))
 						{
 							PyObject *pString = Py_BuildValue("s", filePath);
-							
+
 							PyObject *pValue = PyObject_CallFunctionObjArgs(pImport, pPlatform, pStorage, pString, NULL);
-							
+
 							Py_DECREF(pString);
 							Py_XDECREF(pValue);
 						}
@@ -558,8 +563,12 @@ LRESULT CALLBACK Win32WindowProc(HWND window,
 				case COMMAND_EXPORT:
 				{
 					char filePath[256] = {};
-					OPENFILENAME fileNameResult = Win32FileNameDialog(window, filePath, 256, "C:\\", "Save image", OFN_PATHMUSTEXIST | OFN_NOCHANGEDIR);
-					
+					char filter[6] = {};
+					filter[0] = '.'; filter[1] = 'P'; filter[2] = 'N'; filter[3] = 'G';
+					filter[4] = 0; filter[5] = 0;
+					//".PNG"
+					OPENFILENAME fileNameResult = Win32FileNameDialog(window, filePath, 256, "C:\\", "Save image", OFN_PATHMUSTEXIST | OFN_NOCHANGEDIR, filter);
+
 					if(!GetSaveFileName(&fileNameResult))
 					{
 						LogError("Could not save file.\n");
@@ -569,9 +578,9 @@ LRESULT CALLBACK Win32WindowProc(HWND window,
 						if (pExport && PyCallable_Check(pExport))
 						{
 							PyObject *pString = Py_BuildValue("s", filePath);
-							
+
 							PyObject *pValue = PyObject_CallFunctionObjArgs(pExport, pPlatform, pStorage,pBackBuffer, pString, NULL);
-							
+
 							Py_DECREF(pString);
 							Py_XDECREF(pValue);
 						}
@@ -582,7 +591,7 @@ LRESULT CALLBACK Win32WindowProc(HWND window,
 					}
 				}
 				break;
-				
+
 				/*
 case COMMAND_LOAD:
 {
@@ -602,19 +611,19 @@ break;
 }
 
 int CALLBACK WinMain(HINSTANCE instance,
-					 HINSTANCE prevInstance, 
+					 HINSTANCE prevInstance,
 					 LPSTR cmdLine,
-					 int showCode) 
+					 int showCode)
 {
 	WNDCLASS windowClass = {};
 	HWND windowHandle = NULL;
 	bool pyInitialized = false;
-	
+
 	// Inialize default window name
 	StrCpy(windowName, MAX_PATH, "App", 3);
-	// reroute printf to log file for error handling 
+	// reroute printf to log file for error handling
 	freopen("log.txt", "w", stdout);
-	
+
 	/* Create a new console for printing (only in debug builds) */
 #ifdef DEBUG
 	{
@@ -623,101 +632,101 @@ int CALLBACK WinMain(HINSTANCE instance,
 			LogError("Unable to create console!\n");
 			goto COLLAGE_CLEANUP;
 		}
-		
+
 		consoleStdOut = GetStdHandle(STD_OUTPUT_HANDLE);
 		if (consoleStdOut == INVALID_HANDLE_VALUE)
 		{
 			LogError("Unable to retreive handle to console!\n");
 			goto COLLAGE_CLEANUP;
 		}
-		
+
 		Log("C/Python platform layer version 0.0.0!\n");
 	}
 #endif
-	
+
 	// Get the exectuable path.
 	HMODULE hModule = GetModuleHandle(NULL);
 	char exeAbsolutePath[MAX_PATH] = {};
 	GetModuleFileName(hModule, exeAbsolutePath, MAX_PATH);
-	
+
 	// Initialize the python interpreter and load application
 	Py_SetProgramName((const wchar_t *)exeAbsolutePath);
 	Py_Initialize();
 	pyInitialized = true;
-	
+
 	{
 		PyObject *pName = Py_BuildValue("s", "app");
 		pModule = PyImport_Import(pName);
 		Py_DECREF(pName);
-		
+
 		if (!pModule)
 		{
 			LogError("Unable to import App!\n");
 			PyHandleException();
 			goto COLLAGE_CLEANUP;
 		}
-		
+
 		pUpdateAndRender = PyObject_GetAttrString(pModule, "AppUpdateAndRender");
-		
+
 		pInit = PyObject_GetAttrString(pModule, "AppInit");
-		
+
 		pClose = PyObject_GetAttrString(pModule, "AppClose");
-		
+
 		pImport = PyObject_GetAttrString(pModule, "AppImport");
-		
+
 		pExport = PyObject_GetAttrString(pModule, "AppExport");
-		
+
 		pPreInit = PyObject_GetAttrString(pModule, "AppPreInit");
-		
+
 		pPlatform = PyModule_Create(&pyPlatformModule);
-		
+
 		if (!pPlatform)
 		{
 			LogError("Unable to create platform module!\n");
 			PyHandleException();
 			goto COLLAGE_CLEANUP;
 		}
-		
+
 		pStorage = PyModule_Create(&pyStorageModule);
-		
+
 		if (!pStorage)
 		{
 			LogError("Unable to create storage module!\n");
 			PyHandleException();
 			goto COLLAGE_CLEANUP;
 		}
-		
+
 		pName = Py_BuildValue("s", "recordclass");
 		PyObject *pRecordclass = PyImport_Import(pName);
 		Py_DECREF(pName);
-		
+
 		if (!pRecordclass)
 		{
 			LogError("Unable to import recordclass package!\n");
 			PyHandleException();
 			goto COLLAGE_CLEANUP;
 		}
-		
+
 		PyObject *pKeyTuple = PyObject_CallMethod(pRecordclass, "recordclass", "ss", "key", "isDown wasDown");
-		
+
 		Py_DECREF(pRecordclass);
-		
+
 		if (!pKeyTuple || !PyCallable_Check(pKeyTuple))
 		{
 			LogError("Unable to generate named tuple for key storage!\n");
 			PyHandleException();
 			goto COLLAGE_CLEANUP;
 		}
-		
+
 		PyObject *pKeys = PyList_New(0);
-		
+
 		if (!pKeys)
 		{
 			LogError("Unable to create platform.keys!\n");
 			PyHandleException();
 			goto COLLAGE_CLEANUP;
 		}
-		
+
 		for (int i = 0; i < PLATFORM_KEY_COUNT; i++)
 		{
 			Py_INCREF(Py_False);
@@ -729,13 +738,13 @@ int CALLBACK WinMain(HINSTANCE instance,
 				PyHandleException();
 				goto COLLAGE_CLEANUP;
 			}
-			
+
 			PyList_Append(pKeys, platformKeys[i]);
 		}
-		
+
 		Py_DECREF(pKeyTuple);
 		PyObject_SetAttrString(pPlatform, "keys", pKeys);
-		
+
 		// Setup the enums for the keys
 		PyObject *pInt = NULL;
 		pInt = Py_BuildValue("i", 0);
@@ -829,7 +838,7 @@ int CALLBACK WinMain(HINSTANCE instance,
 		pInt = Py_BuildValue("i", 44);
 		PyObject_SetAttrString(pPlatform, "KEY_MOUSE_RIGHT", pInt);
 	}
-	
+
 	// Call AppPreInit function
 	if (pPreInit && PyCallable_Check(pPreInit))
 	{
@@ -837,20 +846,20 @@ int CALLBACK WinMain(HINSTANCE instance,
 		PyHandleException();
 		Py_XDECREF(pValue);
 	}
-	
+
 	/* Create the window class */
 	windowClass.style = CS_VREDRAW | CS_HREDRAW;
 	windowClass.lpfnWndProc = Win32WindowProc;
 	windowClass.hInstance = instance;
 	windowClass.lpszClassName = "CollageWindowClass";
-	
+
 	// NOTE(Noah): All window classes that an application registers are unregistered when it terminates.
 	if(!RegisterClass(&windowClass))
 	{
 		LogError("Unable to register window class!\n");
 		goto COLLAGE_CLEANUP;
 	}
-	
+
 	/* Create the menu bar and friends */
 	HMENU hMenubar = CreateMenu();
 	HMENU hFile = CreateMenu();
@@ -858,112 +867,112 @@ int CALLBACK WinMain(HINSTANCE instance,
 	AppendMenu(hFile, MF_STRING, COMMAND_IMPORT, "Import image");
 	AppendMenu(hFile, MF_STRING, COMMAND_EXPORT, "Export");
 	AppendMenu(hFile, MF_STRING, COMMAND_LOAD, "Open");
-	
+
 	/* Create the window */
 	windowHandle = CreateWindowEx(0, windowClass.lpszClassName,windowName,WS_CAPTION | WS_SYSMENU | WS_MINIMIZEBOX | WS_VISIBLE, CW_USEDEFAULT, CW_USEDEFAULT,DESIRED_WINDOW_WIDTH, DESIRED_WINDOW_HEIGHT, 0, hMenubar,instance, 0);
-	
+
 	if (!windowHandle)
 	{
 		LogError("Unable to create the window!\n");
 		goto COLLAGE_CLEANUP;
 	}
-	
+
 	// Set up timing things //
 	LARGE_INTEGER lastCounter = Win32GetWallClock();
-	float targetSecondsPerFrame = 1.0f / (float)DESIRED_FRAMES_PER_SECOND; 
-	LONGLONG perfCountFrequency64; 
-	
+	float targetSecondsPerFrame = 1.0f / (float)DESIRED_FRAMES_PER_SECOND;
+	LONGLONG perfCountFrequency64;
+
 	{
 		// TODO(Noah): Better refresh rate checking
 		HDC refreshDC = GetDC(windowHandle);
 		int monitorRefreshRateHz = (float)DESIRED_FRAMES_PER_SECOND;
 		int win32RefreshRate = GetDeviceCaps(refreshDC, VREFRESH);
-		
+
 		if (win32RefreshRate > 1 && !OVERRIDE_MONITOR_REFRESH)
 		{
 			monitorRefreshRateHz = win32RefreshRate;
 		}
-		
+
 		targetSecondsPerFrame = 1.0f / (float)monitorRefreshRateHz;
 		ReleaseDC(windowHandle, refreshDC);
-		
+
 		LARGE_INTEGER perfCountFrequency;
 		QueryPerformanceFrequency(&perfCountFrequency);
 		perfCountFrequency64 = perfCountFrequency.QuadPart;
 		globalPerfFreq = perfCountFrequency64;
 	}
-	
+
 	int clientWidth;
 	int clientHeight;
 	Win32GetWindowDimension(windowHandle, &clientWidth, &clientHeight);
-	
+
 	// Create globalBackbuffer
 	Win32ResizeDIBSection(&globalBackBuffer, clientWidth, clientHeight);
-	
+
 	// Final python initialization
 	{
 		PyObject *pName = Py_BuildValue("s", "PIL.Image");
 		PyObject *pImage = PyImport_Import(pName);
 		Py_DECREF(pName);
-		
+
 		if (!pImage)
 		{
 			LogError("Module PIL.Image not found!\n");
 			goto COLLAGE_CLEANUP;
 		}
-		
+
 		PyObject *pNewImage = PyObject_GetAttrString(pImage, "new");
-		
+
 		Py_DECREF(pImage);
-		
+
 		if (!pNewImage || !PyCallable_Check(pNewImage))
 		{
 			LogError("Unable to call Image.new()!\n");
 			goto COLLAGE_CLEANUP;
 		}
-		
+
 		PyObject *pMode = Py_BuildValue("s", "RGBA");
 		PyObject *pSize = Py_BuildValue("ii", clientWidth, clientHeight);
-		
+
 		LARGE_INTEGER begin = Win32GetWallClock();
-		
+
 		pBackBuffer = PyObject_CallFunctionObjArgs(pNewImage, pMode, pSize, NULL);
-		
+
 		LARGE_INTEGER end = Win32GetWallClock();
-		
+
 		printf("Time to create pBackBuffer: %fms\n", Win32GetSecondsElapsed(begin, end, globalPerfFreq) * 1000.0f);
-		
+
 		Py_DECREF(pNewImage);
 		Py_DECREF(pMode);
 		Py_DECREF(pSize);
-		
+
 		if (!pBackBuffer)
 		{
 			LogError("Unable to create backBuffer!\n");
 			goto COLLAGE_CLEANUP;
 		}
-		
+
 		pBackBufferBytes = PyObject_GetAttrString(pBackBuffer, "tobytes");
-		
+
 		if (!pBackBufferBytes)
 		{
 			LogError("backBuffer has no method tobytes()!\n");
 			goto COLLAGE_CLEANUP;
 		}
-		
-		PyObject *pDeltaTime = Py_BuildValue("d", targetSecondsPerFrame); 
-		
+
+		PyObject *pDeltaTime = Py_BuildValue("d", targetSecondsPerFrame);
+
 		PyObject_SetAttrString(pPlatform, "deltaTime", pDeltaTime);
 	}
-	
-	// Call python app init callback 
+
+	// Call python app init callback
 	if (pInit && PyCallable_Check(pInit))
 	{
 		PyObject *pValue = PyObject_CallFunctionObjArgs(pInit, pPlatform, pStorage, pBackBuffer, NULL);
 		PyHandleException();
 		Py_XDECREF(pValue);
 	}
-	
+
 	while (globalRunning)
 	{
 		// Update important input extravaganza
@@ -971,7 +980,7 @@ int CALLBACK WinMain(HINSTANCE instance,
 		{
 			globalInput.buttons[i].wasDown = globalInput.buttons[i].isDown;
 		}
-		
+
 		// Handle windows messages //
 		MSG message;
 		while (PeekMessage(&message, 0, 0, 0, PM_REMOVE))
@@ -986,7 +995,7 @@ int CALLBACK WinMain(HINSTANCE instance,
 				DispatchMessage(&message);
 			}
 		}
-		
+
 		// Grab the position of the mouse
 		// TODO(Noah): Will this code ever fail?
 		// TODO(Noah): I have yet to do rigourous testing to verify the validity of this segment of code
@@ -994,20 +1003,20 @@ int CALLBACK WinMain(HINSTANCE instance,
 			POINT mouseP;
 			GetCursorPos(&mouseP);
 			ScreenToClient(windowHandle, &mouseP);
-			
+
 			PyObject *pMouseX = Py_BuildValue("i", mouseP.x);
 			PyObject_SetAttrString(pPlatform, "mouseX", pMouseX);
-			
+
 			PyObject *pMouseY = Py_BuildValue("i", mouseP.y);
 			PyObject_SetAttrString(pPlatform, "mouseY", pMouseY);
 		}
-		
+
 		// Write the buttons list into the platform keys list!
 		for (int i = 0; i < PLATFORM_KEY_COUNT; i++)
 		{
 			PyObject *pTuple = platformKeys[i];
 			app_button appButton = globalInput.buttons[i];
-			
+
 			if (appButton.isDown)
 			{
 				Py_INCREF(Py_True);
@@ -1018,7 +1027,7 @@ int CALLBACK WinMain(HINSTANCE instance,
 				Py_INCREF(Py_False);
 				PyObject_SetAttrString(pTuple, "isDown", Py_False);
 			}
-			
+
 			if (appButton.wasDown)
 			{
 				Py_INCREF(Py_True);
@@ -1030,58 +1039,58 @@ int CALLBACK WinMain(HINSTANCE instance,
 				PyObject_SetAttrString(pTuple, "wasDown", Py_False);
 			}
 		}
-		
+
 		{
 			if (pUpdateAndRender && PyCallable_Check(pUpdateAndRender))
 			{
 				PyObject *pValue = PyObject_CallFunctionObjArgs(pUpdateAndRender, pPlatform, pStorage, pBackBuffer, NULL);
 				PyHandleException();
 				Py_XDECREF(pValue);
-				
+
 				// Fix the bit formating. PIL images are ABGR and windows bitmap images are ARGB.
-				// TODO(Noah): Look into string pBackBuffer as a PIL windows bitmap. This may speed up my program because I will no longer have to modify each pixel. 
-				
+				// TODO(Noah): Look into string pBackBuffer as a PIL windows bitmap. This may speed up my program because I will no longer have to modify each pixel.
+
 				LARGE_INTEGER begin = Win32GetWallClock();
-				
+
 				PyObject *pBytes = PyObject_CallFunctionObjArgs(pBackBufferBytes, NULL);
-				
+
 				LARGE_INTEGER end = Win32GetWallClock();
 				printf("Time to retrieve bytes: %fms\n", Win32GetSecondsElapsed(begin, end, globalPerfFreq) * 1000.0f);
-				
+
 				if (pBytes)
 				{
-					
+
 					LARGE_INTEGER begin = Win32GetWallClock();
-					
+
 					char *bytes = PyBytes_AsString(pBytes);
 					unsigned int *destPointer = (unsigned int *)globalBackBuffer.memory;
 					unsigned int *sourcePointer = (unsigned int *)bytes;
-					
+
 					for (unsigned int i = 0; i < globalBackBuffer.width * globalBackBuffer.height; i++)
 					{
 						*destPointer++ = (*sourcePointer & 0x000000FF) << 16 | (*sourcePointer & 0x00FF0000) >> 16 | *sourcePointer & 0xFF00FF00;
 						sourcePointer++;
 					}
-					
+
 					LARGE_INTEGER end = Win32GetWallClock();
-					
+
 					printf("Time to convert pixel from RGBA to ABGR: %fms\n", Win32GetSecondsElapsed(begin, end, globalPerfFreq) * 1000.0f);
-					
+
 					begin = Win32GetWallClock();
-					
+
 					Py_DECREF(pBytes);
-					
+
 					end = Win32GetWallClock();
-					
+
 					printf("Time to dealloc bytes: %fms\n", Win32GetSecondsElapsed(begin, end, globalPerfFreq) * 1000.0f);
-					
+
 				}
-				
+
 			}
 		}
-		
+
 		LARGE_INTEGER begin = Win32GetWallClock();
-		
+
 		{
 			HDC deviceContext = GetDC(windowHandle);
 			int width;
@@ -1090,24 +1099,24 @@ int CALLBACK WinMain(HINSTANCE instance,
 			Win32DisplayBufferWindow(deviceContext,&globalBackBuffer, width, height);
 			ReleaseDC(windowHandle, deviceContext);
 		}
-		
+
 		LARGE_INTEGER end = Win32GetWallClock();
-		
+
 		printf("Time to draw to window: %fms\n", Win32GetSecondsElapsed(begin, end, globalPerfFreq) * 1000.0f);
-		
-		// Sleep so that we don't burn the CPU 
+
+		// Sleep so that we don't burn the CPU
 		float secondsElapsed = Win32GetSecondsElapsed(lastCounter, Win32GetWallClock(), perfCountFrequency64);
-		
+
 		if (secondsElapsed < targetSecondsPerFrame)
 		{
 			DWORD sleepMS = (DWORD)(1000.0f * (targetSecondsPerFrame - secondsElapsed));
-			
+
 			if (sleepMS > 0)
 			{
 				// NOTE(Noah): This function may not be accurate due to the granularity of the system clock. For more accuracy, see https://docs.microsoft.com/en-us/windows/desktop/api/synchapi/nf-synchapi-sleep
 				Sleep(sleepMS);
 			}
-			
+
 			while (secondsElapsed < targetSecondsPerFrame)
 			{
 				secondsElapsed = Win32GetSecondsElapsed(lastCounter, Win32GetWallClock(), perfCountFrequency64);
@@ -1117,19 +1126,19 @@ int CALLBACK WinMain(HINSTANCE instance,
 		{
 			//LogError("Missed the frame rate! Either something is wrong or you need to do some optimization. Or, Python sucks.\n");
 		}
-		
+
 		LARGE_INTEGER endCounter = Win32GetWallClock();
-		
+
 		// Lol! What a cheese!!
 		secondsElapsed = Win32GetSecondsElapsed(lastCounter, endCounter, perfCountFrequency64);
-		
+
 		PyObject *pDeltaTime = Py_BuildValue("d", secondsElapsed);
-		
+
 		PyObject_SetAttrString(pPlatform, "deltaTime", pDeltaTime);
-		
+
 		lastCounter = endCounter;
 	}
-	
+
 	// Call AppClose function
 	if (pClose && PyCallable_Check(pClose))
 	{
@@ -1137,23 +1146,23 @@ int CALLBACK WinMain(HINSTANCE instance,
 		PyHandleException();
 		Py_XDECREF(pValue);
 	}
-	
+
 	// Run cleanup routines
 	{
 		COLLAGE_CLEANUP:
-		
+
 		if (windowHandle)
 		{
 			DestroyWindow(windowHandle);
 		}
-		
+
 		// Doesn't matter if this fails or whatever, it won't crash the program
 		FreeConsole();
-		
+
 		if (pyInitialized)
 		{
 			// Since the the python interpreter may fail at deallocating things, I am going to dereference all of these things before finalization for good measure
-			
+
 			Py_XDECREF(pUpdateAndRender);
 			Py_XDECREF(pInit);
 			Py_XDECREF(pImport);
@@ -1165,21 +1174,21 @@ int CALLBACK WinMain(HINSTANCE instance,
 			Py_XDECREF(pBackBuffer);
 			Py_XDECREF(pPlatform);
 			Py_XDECREF(pStorage);
-			
+
 			for (unsigned int i = 0; i < PLATFORM_KEY_COUNT; i++)
 			{
 				Py_XDECREF(platformKeys[i]);
 			}
-			
+
 			Py_Finalize();
 		}
-		
+
 		// Free the backBuffer
 		if (globalBackBuffer.memory)
 		{
 			VirtualFree(globalBackBuffer.memory, 0, MEM_RELEASE);
 		}
 	}
-	
+
 	return 0;
 }
