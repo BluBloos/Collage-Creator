@@ -12,7 +12,12 @@ After installing visual studio, clone this project and run the following command
 $ shell.bat
 $ build.bat
 ```
+To run the project, run the following commands
 
+```
+$ cd bin
+$ Collage.exe
+```
 ## Tech Used:
 The app runs as a python script loaded by a custom platform layer written in C. The platform layer runs the app via the <a href="https://docs.python.org/3/c-api/index.html">Python/C API</a>. The python scripts makes use of the <a href="https://pillow.readthedocs.io/en/stable/index.html">Python Imaging Library</a>.
 
