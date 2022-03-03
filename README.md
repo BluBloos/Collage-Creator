@@ -1,3 +1,5 @@
+![collage_maker](https://user-images.githubusercontent.com/38915815/156572491-5004f58b-4c68-4b2c-9f0b-6fa0f91a72ac.PNG)
+
 # Collage-Creator ✏️
 A simple app to create collages with your favourite images! You can drag and drop, scale and crop, and apply filters to the images. Give it a go! 🙌
 
