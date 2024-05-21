@@ -19,6 +19,38 @@ scripts makes use of the <a
 href="https://pillow.readthedocs.io/en/stable/index.html">Python Imaging
 Library</a>.
 
+# Features
+
+- Native window menu:
+    - Import image via native modal window.
+    - Export the finished collage via a native modal window.
+- Imported images are stored in an "image palette".
+    - Drag an image to place on canvas.
+- Canvas Interaction:
+    - Drag images to translate on canvas.
+    - Drag image edges to crop image.
+    - Images reside in layers.
+- Visual effects:
+    - Change cursor icons on mouse hover.
+    - Animate application controls when hovered over.
+- Image Context Menu (Right-click Menu):
+    - Layer adjustments: "Bring to top", "Bring to bottom", "Step up", "Step down"
+    - "Filter" (opens menu of filters to apply)
+    - "Reset transform", "Reset filters"
+    - "Remove" (removes image)
+    - "Exit" (exits right-click menu)
+- Apply multiple image filters as a set of transformations:
+    - "Negate red" (negate the red channel)
+    - "Negate red (banding)" (apply the filter but only in vertical bands)
+    - "Monochrome"
+    - "Radial vignette"
+    - "Flip horizontal"
+    - "Flip vertical"
+    - "Gaussian blur"
+    - "Emboss"
+    - "Pixelate"
+    - "Retro" (CRT effect)
+
 # Steps for Building
 
 This project uses the Visual Studio compiler; you will need to install <a
