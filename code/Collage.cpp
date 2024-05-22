@@ -219,7 +219,7 @@ void Win32ResizeDIBSection(win32_offscreen_buffer *buffer,int width, int height)
 	int bitmapMemorySize = width * height * buffer->bytesPerPixel;
 	buffer->memory = VirtualAlloc(0, bitmapMemorySize, MEM_COMMIT,PAGE_READWRITE);
 
-	//NOTE(Noah): setting pitch shit, ahah.
+	//NOTE(Noah): setting pitch.
 	buffer->pitch = width * buffer->bytesPerPixel;
 
 	buffer->totalSize = bitmapMemorySize;

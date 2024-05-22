@@ -14,7 +14,7 @@
 	# The user should be able to make the app go fullscreen
 	# There should be hotkeys for the commands (import image, export, save, open, etc)
 	# Make a "delete nulls" command. This command goes through each image and finds images who would not be otherwise visible (their left and right cropPercentages are equal for example). Once it finds these images, it deletes them. I believe this is a good feature because I can forsee the possiblity that someone will forget about these so called null images that they accidentally created.
-	# Use the C backend to blit the FPS onto the screen like a fraps program lmao
+	# Use the C backend to blit the FPS onto the screen like a Fraps program.
 	# Dynamic canvas size (new menu title canvas)
 		# resize command
 	# Canvas loading and saving
