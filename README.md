@@ -28,7 +28,7 @@ Library</a>.
     - Drag an image to place on canvas.
 - Canvas Interaction:
     - Drag images to translate on canvas.
-    - Drag image edges to crop image.
+    - Drag image edges to crop image (hold S to scale instead).
     - Images reside in layers.
 - Visual effects:
     - Change cursor icons on mouse hover.
@@ -39,9 +39,9 @@ Library</a>.
     - "Reset transform", "Reset filters"
     - "Remove" (removes image)
     - "Exit" (exits right-click menu)
-- Program Context Menu (Right-click the canvas:
+- Program Context Menu (Right-click the canvas):
     - "Generate collage" (generates a random collage using the images in the palette)
-    - "Go bannanas" (This is an easter egg - download the app to find out!)    
+    - "Go bannanas" (This is an easter egg - download the app to find out!)
 - Apply multiple image filters as a set of transformations:
     - "Negate red" (negate the red channel)
     - "Negate red (banding)" (apply the filter but only in vertical bands)
