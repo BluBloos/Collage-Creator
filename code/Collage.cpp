@@ -18,7 +18,6 @@ Below are the things that would be nice
 #include <windows.h>
 #include <stdio.h>
 #include "strings.cpp"
-#include "collage_python.cpp"
 
 /* DEFINES */
 

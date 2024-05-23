@@ -729,14 +729,14 @@ def AppInit(platform, storage, backBuffer):
 	storage.images = []
 
 	storage.pool = Pool(20, 75, 10)
-	storage.pool.Append( Pool.PoolObjectFromFileName("res/dog.jpg") )
-	storage.pool.Append( Pool.PoolObjectFromFileName("res/laptop.png") )
+	storage.pool.Append( Pool.PoolObjectFromFileName("res/gpu.jpg") )
+	storage.pool.Append( Pool.PoolObjectFromFileName("res/laptop.jpg") )
 	storage.pool.Append( Pool.PoolObjectFromFileName("res/bouldering.jpg") )
 
 	storage.lastMouseX = 0
 	storage.lastMouseY = 0
 
-	storage.font = ImageFont.truetype("res/arial.ttf", 20)
+	storage.font = ImageFont.truetype("res/FreeSans.ttf", 20)
 	storage.renderer = ImageDraw.Draw(backBuffer)
 
 	storage.upArrow = ImageLoad("res/arrow.png")
