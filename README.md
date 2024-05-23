@@ -39,6 +39,9 @@ Library</a>.
     - "Reset transform", "Reset filters"
     - "Remove" (removes image)
     - "Exit" (exits right-click menu)
+- Program Context Menu (Right-click the canvas:
+    - "Generate collage" (generates a random collage using the images in the palette)
+    - "Go bannanas" (This is an easter egg - download the app to find out!)    
 - Apply multiple image filters as a set of transformations:
     - "Negate red" (negate the red channel)
     - "Negate red (banding)" (apply the filter but only in vertical bands)
